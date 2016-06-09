@@ -3,18 +3,19 @@ from producto import Producto
 archivo = open("productos.txt" , "rb")
 listaB = pickle.load (archivo)
 
-
 r = 1
 while r == 1 :
+	encontrado = False 
 	pro = input("Ingrese el nombre del producto que desea buscar: ")
-	for Producto in listaB :
-		if Producto.nombre == pro:
-			proD = str(Producto.disponibilidad)
-			proP = str(Producto.precio)
+	for producto in listaB :
+		if producto.nombre == pro:
+			proD = str(producto.disponibilidad)
+			proP = str(producto.precio)
 			print ("Disponibilidad: " + proD)
 			print ("Precio: " + proP)
-		else :
-			print ("Ese producto no existe")
+			encontrado = True 
+	if not encontrado:
+		print ("Ese producto no esta en la lista") 
 	r = int(input("Desea buscar otro producto? Si = 1 No = 2 "))
 
 
